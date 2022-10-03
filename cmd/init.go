@@ -4,7 +4,7 @@ import (
 	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/samhep0803/togo/internal/tui"
+	"github.com/samhep0803/togo/internal/tui/initprompt"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -31,7 +31,7 @@ func initialize() *cobra.Command {
 				return err
 			}
 
-			if err := tea.NewProgram(tui.NewInitPrompt(viper.GetString(cfgPath), homeDir)).Start(); err != nil {
+			if err := tea.NewProgram(initprompt.NewInitPrompt(viper.GetString(cfgPath), homeDir)).Start(); err != nil {
 				return err
 			}
 			return nil

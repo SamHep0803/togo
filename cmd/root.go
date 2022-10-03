@@ -6,7 +6,7 @@ import (
 	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/samhep0803/togo/internal/tui/root"
+	"github.com/samhep0803/togo/internal/tui"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -30,7 +30,7 @@ func Execute() error {
 			return nil
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if err := tea.NewProgram(root.New(), tea.WithAltScreen()).Start(); err != nil {
+			if err := tea.NewProgram(tui.New(), tea.WithAltScreen()).Start(); err != nil {
 				return err
 			}
 
